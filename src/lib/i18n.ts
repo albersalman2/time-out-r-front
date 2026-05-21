@@ -1,4 +1,4 @@
-export const locales = ["nl", "fr", "de"] as const;
+export const locales = ["nl", "en", "fr", "de"] as const;
 
 export type Locale = (typeof locales)[number];
 
@@ -10,6 +10,7 @@ export function isLocale(value: string): value is Locale {
 
 export const localeNames: Record<Locale, string> = {
   nl: "NL",
+  en: "EN",
   fr: "FR",
   de: "DE",
 };
@@ -122,6 +123,115 @@ export const dictionary = {
       "pizza-vis": { title: "Pizza's Vis" },
       "pizza-specials": { title: "Pizza Specials" },
       kinderpizza: { title: "Kinderpizza" },
+    },
+  },
+  en: {
+    brand: {
+      tagline: "Kebab, pizza, pasta, snacks, grill and pita",
+    },
+    nav: {
+      home: "Home",
+      menu: "Menu",
+      about: "About",
+      contact: "Contact",
+      aria: "Main navigation",
+      language: "Language",
+    },
+    meta: {
+      title: "Time Out | Kebab, Pizza, Pasta & Snacks in Mol",
+      description: "Time Out serves kebab, pizza, pasta, snacks, grill and pita at Rozenberg 9 in Mol.",
+    },
+    footer: {
+      visit: "Visit",
+      explore: "Explore",
+      fullMenu: "Full menu",
+      about: "About Time Out",
+      contact: "Contact",
+    },
+    common: {
+      call: "Call",
+      menuCta: "View full menu",
+      seeEveryItem: "See every item",
+      browseMenu: "Browse the menu",
+      openMenu: "Open the menu",
+      details: "Details",
+    },
+    home: {
+      hero: "Kebab, pizza, pasta, snacks, grill and pita with fresh sandwiches, loaded kapsalons, grill platters and pizza deals.",
+      highlightsEyebrow: "Menu highlights",
+      highlightsTitle: "Fast service, full plates, clear prices.",
+      counterEyebrow: "From the counter",
+      counterTitle: "Loaded plates, warm bread and pizza straight from the oven.",
+      counterCopy: "Choose a quick sandwich, a full grill platter, pasta, kapsalon or family pizza and call ahead for pickup at Rozenberg 9 in Mol.",
+      previewAltKebab: "Menu preview page with kebab and pasta",
+      previewAltPizza: "Menu preview page with pizzas",
+    },
+    menuPage: {
+      title: "Menu | Time Out",
+      description: "Full Time Out menu with kebab, sandwiches, durums, platters, pasta, pizza, snacks, drinks and offers.",
+      eyebrow: "Full menu",
+      heading: "Every item from the Time Out menu.",
+      sourceEyebrow: "Printed menu",
+      sourceTitle: "Source pages from the supplied PDF.",
+    },
+    about: {
+      title: "About | Time Out",
+      description: "About Time Out in Mol and its kebab, pizza, pasta, snacks, grill and pita menu.",
+      eyebrow: "About",
+      copy: "A direct food spot in Mol built around kebab, pizza, pasta, snacks, grill platters and pita.",
+      cards: [
+        ["Kebab & grill", "Sandwiches, durums, kapsalon and platters with clear small, large, normal and mega sizes."],
+        ["Pizza & pasta", "Vegetarian, classic, chicken, kebab, fish, special and kids pizzas plus a full pasta list."],
+        ["Snacks & drinks", "Boxes, chicken snacks, garlic breads, desserts, cold drinks and warm drinks."],
+      ],
+    },
+    contact: {
+      title: "Contact | Time Out",
+      description: "Contact Time Out at Rozenberg 9 in Mol by phone.",
+      eyebrow: "Contact",
+      heading: "Order or visit Time Out in Mol.",
+      weekly: "Weekly offers",
+      disclaimer: "Offers are not valid on public holidays and are only available for pickup.",
+    },
+    offers: [
+      { day: "Monday", title: "Kapsalon day", items: ["All normal kapsalons €9,00", "All mega kapsalons €12,00"] },
+      { day: "Tuesday", title: "Pasta day", items: ["All pastas €9,00"] },
+      { day: "Thursday", title: "Pizza day", items: ["All medium pizzas €9,00", "All large pizzas €12,00"] },
+    ],
+    labels: {
+      small: "Small",
+      large: "Large",
+      normal: "Normal",
+      mega: "MEGA",
+      medium: "M",
+      pizzaLarge: "L",
+    },
+    sections: {
+      menus: { title: "Menus", note: "Served with fries and a soft drink." },
+      broodjes: { title: "Sandwiches" },
+      durums: { title: "Durums" },
+      lahmacun: { title: "Lahmacun" },
+      kapsalon: { title: "Kapsalon" },
+      stoofschotels: { title: "Stews", note: "Served with fries or rice." },
+      burgers: { title: "Burgers", note: "Served with fries." },
+      pastas: { title: "Pastas" },
+      salade: { title: "Salads" },
+      schotels: { title: "Platters", note: "Served with fries, rice or bread." },
+      bakjes: { title: "Boxes", note: "Fries + €3." },
+      snacks: { title: "Snacks" },
+      lookbroodjes: { title: "Garlic breads" },
+      extras: { title: "Extras" },
+      sauzen: { title: "Sauces", note: "Sauces are €0,50." },
+      desserts: { title: "Desserts" },
+      dranken: { title: "Drinks" },
+      "pizza-vegetarisch": { title: "Vegetarian pizzas", note: "Family XL + €5." },
+      "pizza-klassiek": { title: "Classic pizzas" },
+      "pizza-vlees-kip": { title: "Meat & chicken pizzas" },
+      "pizza-kebab-shoarma": { title: "Kebab & shoarma pizzas" },
+      "pizza-pittig": { title: "Spicy & special pizzas" },
+      "pizza-vis": { title: "Fish pizzas" },
+      "pizza-specials": { title: "Pizza specials" },
+      kinderpizza: { title: "Kids pizza" },
     },
   },
   fr: {

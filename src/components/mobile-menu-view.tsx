@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-import type { Locale, getDictionary } from "@/lib/i18n";
+import { localeNames, locales, type Locale, type getDictionary } from "@/lib/i18n";
 import type { MenuSection as MenuSectionType } from "@/lib/menu";
 import { restaurant } from "@/lib/menu";
 
@@ -37,16 +38,30 @@ export function MobileMenuView({
   sections: MenuSectionType[];
   t: ReturnType<typeof getDictionary>;
 }) {
+  const pathname = usePathname();
+  const router = useRouter();
   const [activeSectionId, setActiveSectionId] = useState(sections[0]?.id ?? "");
   const activeSection = useMemo(
     () => sections.find((section) => section.id === activeSectionId) ?? sections[0],
     [activeSectionId, sections],
   );
 
+  function handleLocaleChange(nextLocale: Locale) {
+    const parts = pathname.split("/");
+
+    if (locales.includes(parts[1] as Locale)) {
+      parts[1] = nextLocale;
+      router.push(parts.join("/") || `/${nextLocale}`);
+      return;
+    }
+
+    router.push(`/${nextLocale}${pathname === "/" ? "" : pathname}`);
+  }
+
   return (
     <section className="mobile-menu-app min-h-screen bg-white text-[#10100f] lg:hidden">
       <div className="sticky top-0 z-50 border-b border-black/10 bg-white">
-        <div className="grid h-20 grid-cols-[48px_1fr_48px] items-center px-4">
+        <div className="grid h-20 grid-cols-[48px_1fr_72px] items-center px-4">
           <Link
             href={`/${locale}`}
             aria-label={t.nav.home}
@@ -58,24 +73,25 @@ export function MobileMenuView({
             <p className="text-xl font-black">{restaurant.name}</p>
             <p className="mt-1 text-[11px] font-black uppercase text-[#6c6255]">{t.nav.menu}</p>
           </div>
-          <a
-            href={`tel:${restaurant.phone.replaceAll(" ", "")}`}
-            aria-label={`${t.common.call} ${restaurant.phone}`}
-            className="grid size-12 place-items-center text-3xl"
+          <label className="sr-only" htmlFor="mobile-menu-language">
+            {t.nav.language}
+          </label>
+          <select
+            id="mobile-menu-language"
+            value={locale}
+            onChange={(event) => handleLocaleChange(event.target.value as Locale)}
+            className="h-10 rounded-md border border-black/10 bg-white px-2 text-sm font-black text-[#10100f]"
           >
-            ⌕
-          </a>
+            {locales.map((item) => (
+              <option key={item} value={item}>
+                {localeNames[item]}
+              </option>
+            ))}
+          </select>
         </div>
 
-        <div className="flex items-center gap-3 overflow-hidden border-t border-black/5">
-          <button
-            type="button"
-            aria-label={t.menuPage.eyebrow}
-            className="grid h-14 w-16 shrink-0 place-items-center border-r border-black/5 text-2xl"
-          >
-            ☰
-          </button>
-          <div className="mobile-scrollbar flex flex-1 snap-x gap-1 overflow-x-auto overscroll-x-contain pr-4">
+        <div className="overflow-hidden border-t border-black/5">
+          <div className="mobile-scrollbar flex snap-x gap-1 overflow-x-auto overscroll-x-contain px-4">
             {sections.map((section) => (
               <button
                 type="button"
@@ -118,13 +134,6 @@ export function MobileMenuView({
                 <div className="absolute inset-4 grid place-items-center rounded-md border border-[#eadfcb] bg-white/70 text-5xl font-black text-[#f25a1d]">
                   {getInitials(item.name)}
                 </div>
-                <button
-                  type="button"
-                  aria-label={`${item.name} ${getItemPrice(item)}`}
-                  className="absolute bottom-2 right-2 grid size-12 place-items-center rounded-full bg-white text-3xl font-semibold shadow-lg"
-                >
-                  +
-                </button>
               </div>
               <h2 className="mt-3 line-clamp-2 text-lg font-black leading-6">{item.name}</h2>
               <p className="mt-1 text-base font-semibold text-[#10100f]">{getItemPrice(item)}</p>

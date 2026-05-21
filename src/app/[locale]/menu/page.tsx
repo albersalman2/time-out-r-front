@@ -44,18 +44,21 @@ export default async function MenuPage({ params }: PageProps) {
         <div className="mx-auto max-w-7xl">
           <p className="text-sm font-black uppercase text-[#ffcf8c]">{t.menuPage.eyebrow}</p>
           <h1 className="mt-3 max-w-3xl text-5xl font-black uppercase">{t.menuPage.heading}</h1>
-          <div className="mt-8 flex flex-wrap gap-2">
-            {sections.map((section) => (
-              <a
-                key={section.id}
-                href={`#${section.id}`}
-                className="rounded-md border border-white/15 px-3 py-2 text-sm font-semibold text-white/80 transition hover:border-[#f25a1d] hover:text-white"
-              >
-                {section.title}
-              </a>
-            ))}
-          </div>
         </div>
+      </section>
+
+      <section className="sticky top-[77px] z-40 hidden border-y border-white/10 bg-[#10100f]/95 px-4 py-4 text-white backdrop-blur sm:px-6 lg:block lg:px-8">
+        <nav aria-label={t.menuPage.eyebrow} className="mx-auto flex max-w-7xl flex-wrap gap-2">
+          {sections.map((section) => (
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              className="rounded-md border border-white/15 px-3 py-2 text-sm font-semibold text-white/80 transition hover:border-[#f25a1d] hover:text-white"
+            >
+              {section.title}
+            </a>
+          ))}
+        </nav>
       </section>
 
       <section className="hidden bg-[#f25a1d] text-[#10100f] lg:block">
