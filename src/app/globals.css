@@ -26,3 +26,18 @@ body {
   background: #f25a1d;
   color: #10100f;
 }
+
+.mobile-scrollbar {
+  scrollbar-width: none;
+}
+
+.mobile-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  body:has(.mobile-menu-app) > header,
+  body:has(.mobile-menu-app) > footer {
+    display: none;
+  }
+}
