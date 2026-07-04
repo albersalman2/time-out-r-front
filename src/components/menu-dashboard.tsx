@@ -1,6 +1,9 @@
 "use client";
 
+<<<<<<< HEAD
 import Link from "next/link";
+=======
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
 import { useMemo, useState } from "react";
 import { formatEuro } from "@/lib/order-menu";
 import type { DashboardMenuItem } from "@/lib/menu-store";
@@ -24,6 +27,10 @@ export function MenuDashboard({ initialItems }: { initialItems: DashboardMenuIte
   const [items, setItems] = useState(initialItems);
   const [query, setQuery] = useState("");
   const [savingId, setSavingId] = useState("");
+<<<<<<< HEAD
+=======
+  const [uploadingId, setUploadingId] = useState("");
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
   const [message, setMessage] = useState("");
 
   const filteredItems = useMemo(() => {
@@ -127,6 +134,40 @@ export function MenuDashboard({ initialItems }: { initialItems: DashboardMenuIte
     }
   }
 
+<<<<<<< HEAD
+=======
+  async function uploadImage(item: DashboardMenuItem, file: File | undefined) {
+    if (!file) {
+      return;
+    }
+
+    setUploadingId(item.id);
+    setMessage("");
+
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const response = await fetch(`/api/menu/items/${item.id}/image`, {
+        method: "POST",
+        body: formData,
+      });
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.error ?? "Image could not be uploaded.");
+      }
+
+      setItems(payload.items);
+      setMessage(`Uploaded image for ${item.name}.`);
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Image could not be uploaded.");
+    } finally {
+      setUploadingId("");
+    }
+  }
+
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
   return (
     <section className="bg-[#f7f2e8] px-4 py-10 text-[#10100f] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -139,6 +180,7 @@ export function MenuDashboard({ initialItems }: { initialItems: DashboardMenuIte
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
+<<<<<<< HEAD
             <Link
               href="/admin/orders"
               className="inline-flex h-11 items-center justify-center rounded-md border border-[#10100f] px-4 text-sm font-black"
@@ -151,6 +193,8 @@ export function MenuDashboard({ initialItems }: { initialItems: DashboardMenuIte
             >
               Customer menu
             </Link>
+=======
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
             <button
               type="button"
               onClick={seedMenu}
@@ -182,7 +226,36 @@ export function MenuDashboard({ initialItems }: { initialItems: DashboardMenuIte
           {filteredItems.length ? (
             filteredItems.map((item) => (
               <article key={item.id} className="rounded-md border border-[#eadfcb] bg-white p-5 shadow-sm">
+<<<<<<< HEAD
                 <div className="grid gap-4 lg:grid-cols-[1fr_160px]">
+=======
+                <div className="grid gap-4 lg:grid-cols-[140px_1fr_160px]">
+                  <div>
+                    <div className="aspect-square overflow-hidden rounded-md border border-[#eadfcb] bg-[#f7f2e8]">
+                      {item.imageUrl ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={item.imageUrl} alt={item.name} className="size-full object-cover" />
+                      ) : (
+                        <div className="grid size-full place-items-center px-3 text-center text-xs font-black uppercase text-[#6c6255]">
+                          No photo
+                        </div>
+                      )}
+                    </div>
+                    <label className="mt-2 block">
+                      <span className="sr-only">Upload image for {item.name}</span>
+                      <input
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp"
+                        disabled={uploadingId === item.id}
+                        onChange={(event) => uploadImage(item, event.target.files?.[0])}
+                        className="block w-full text-xs font-semibold file:mr-2 file:rounded-md file:border-0 file:bg-[#10100f] file:px-3 file:py-2 file:text-xs file:font-black file:text-white"
+                      />
+                    </label>
+                    {uploadingId === item.id ? (
+                      <p className="mt-2 text-xs font-black text-[#f25a1d]">Uploading...</p>
+                    ) : null}
+                  </div>
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
                   <div className="grid gap-3 md:grid-cols-2">
                     <label>
                       <span className="text-xs font-black uppercase text-[#6c6255]">

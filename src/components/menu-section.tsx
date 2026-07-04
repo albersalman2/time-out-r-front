@@ -28,7 +28,11 @@ function PriceList({
 
 export function MenuSection({ section }: { section: MenuSectionType }) {
   return (
+<<<<<<< HEAD
     <section id={section.id} className="scroll-mt-28 rounded-md border border-[#eadfcb] bg-white p-5 shadow-sm">
+=======
+    <section id={section.id} className="scroll-mt-28 rounded-md border border-[#eadfcb] bg-white p-5 shadow-sm lg:scroll-mt-72">
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
       <div className="border-b border-[#eadfcb] pb-4">
         <h2 className="text-2xl font-black text-[#10100f]">{section.title}</h2>
         {section.note ? <p className="mt-2 text-sm font-semibold text-[#6c6255]">{section.note}</p> : null}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Link from "next/link";
 import { offers, restaurant } from "@/lib/menu";
 
@@ -47,4 +48,11 @@ export default function ContactPage() {
       </section>
     </>
   );
+=======
+import { redirect } from "next/navigation";
+import { defaultLocale } from "@/lib/i18n";
+
+export default function ContactRedirect() {
+  redirect(`/${defaultLocale}/contact`);
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
 }

@@ -338,7 +338,11 @@ export async function listOrderMenuFromDatabase(locale: Locale): Promise<OrderMe
   const db = getPool();
 
   if (!db) {
+<<<<<<< HEAD
     return [];
+=======
+    return getOrderMenu(locale);
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
   }
 
   await ensureMenuSchema();
@@ -367,7 +371,11 @@ export async function listOrderMenuFromDatabase(locale: Locale): Promise<OrderMe
   `);
 
   if (!result.rows.length) {
+<<<<<<< HEAD
     return [];
+=======
+    return getOrderMenu(locale);
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
   }
 
   return mapRows(result.rows, locale, false);

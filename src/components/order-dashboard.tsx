@@ -1,6 +1,9 @@
 "use client";
 
+<<<<<<< HEAD
 import Link from "next/link";
+=======
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
 import { useMemo, useState } from "react";
 import { formatEuro } from "@/lib/order-menu";
 import type { OrderStatus, StoredOrder } from "@/lib/order-store";
@@ -86,6 +89,7 @@ export function OrderDashboard({ initialOrders }: { initialOrders: StoredOrder[]
           <div>
             <p className="text-sm font-black uppercase text-[#f25a1d]">Backend dashboard</p>
             <h1 className="mt-2 text-4xl font-black">Online orders</h1>
+<<<<<<< HEAD
           </div>
           <Link
             href="/admin/menu"
@@ -99,6 +103,12 @@ export function OrderDashboard({ initialOrders }: { initialOrders: StoredOrder[]
           >
             Open customer menu
           </Link>
+=======
+            <p className="mt-2 text-sm font-semibold text-[#6c6255]">
+              Track incoming pickup and delivery orders from the online menu.
+            </p>
+          </div>
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
         </div>
 
         <div className="mb-6 grid gap-3 md:grid-cols-4">

@@ -1,6 +1,10 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+<<<<<<< HEAD
 import { Pool } from "pg";
+=======
+import { getPool } from "@/lib/db";
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
 
 export type FulfillmentType = "pickup" | "delivery";
 export type PaymentMethod = "pay_at_pickup" | "pay_on_delivery" | "card_terminal";
@@ -66,6 +70,7 @@ const orderStatuses: OrderStatus[] = [
   "cancelled",
 ];
 
+<<<<<<< HEAD
 let pool: Pool | undefined;
 let schemaReady: Promise<void> | undefined;
 
@@ -90,6 +95,10 @@ function getPool() {
   return pool;
 }
 
+=======
+let schemaReady: Promise<void> | undefined;
+
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
 async function ensureSchema() {
   const db = getPool();
 

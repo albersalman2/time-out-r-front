@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { OrderDashboard } from "@/components/order-dashboard";
+<<<<<<< HEAD
+=======
+import { requireAdminSession } from "@/lib/auth";
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
 import { listOrders } from "@/lib/order-store";
 
 export const metadata: Metadata = {
@@ -10,6 +14,10 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminOrdersPage() {
+<<<<<<< HEAD
+=======
+  await requireAdminSession();
+>>>>>>> f513f9e6961e0d796b51bc51e6ebb17600076bd3
   const orders = await listOrders();
 
   return <OrderDashboard initialOrders={orders} />;
