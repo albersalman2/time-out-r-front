@@ -15,6 +15,7 @@ export function SiteHeader({
     { href: `/${locale}/menu`, label: t.nav.menu },
     { href: `/${locale}/about`, label: t.nav.about },
     { href: `/${locale}/contact`, label: t.nav.contact },
+    { href: "/admin/orders", label: "Dashboard" },
   ];
 
   return (
